@@ -64,18 +64,18 @@ class TestBank(unittest.TestCase):
         self.bank = Bank()
 
     def test_find_customer_ok(self):
-        c = self.bank.findCustomer(1001, 1234)
+        c = self.bank.find_customer(1001, 1234)
         self.assertIsNotNone(c)
         self.assertEqual(c.number, 1001)
 
     def test_wrong_pin(self):
-        self.assertIsNone(self.bank.findCustomer(1001, 0))
+        self.assertIsNone(self.bank.find_customer(1001, 0))
 
     def test_unknown_number(self):
-        self.assertIsNone(self.bank.findCustomer(5555, 1234))
+        self.assertIsNone(self.bank.find_customer(5555, 1234))
 
     def test_customer_has_two_accounts(self):
-        c = self.bank.findCustomer(1002, 4321)
+        c = self.bank.find_customer(1002, 4321)
         self.assertEqual(c.current_account.get_balance(), 250)
         self.assertEqual(c.savings_account.get_balance(), 3000)
 
@@ -86,7 +86,7 @@ class TestBank(unittest.TestCase):
     def test_add_customer_gets_next_number(self):
         c = self.bank.add_customer(5555, 10, 20)
         self.assertEqual(c.number, 1005)
-        self.assertIs(self.bank.findCustomer(1005, 5555), c)
+        self.assertIs(self.bank.find_customer(1005, 5555), c)
 
     def test_generated_numbers_are_unique(self):
         a = self.bank.add_customer(1)
