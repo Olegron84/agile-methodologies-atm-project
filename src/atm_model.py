@@ -57,7 +57,7 @@ class Bank:
         self.customers.append(customer)
         return customer
 
-    def findCustomer(self, number, pin):
+    def find_customer(self, number, pin):
         """Return the Customer if number and PIN match, otherwise None."""
         for customer in self.customers:
             if customer.number == number and customer.pin == pin:
